@@ -1,4 +1,4 @@
-package com.entry.entrydsmapi.domain.application;
+package com.entry.entrydsmapi.domain.application.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

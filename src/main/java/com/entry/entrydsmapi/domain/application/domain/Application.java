@@ -1,6 +1,6 @@
-package com.entry.entrydsmapi.domain.application;
+package com.entry.entrydsmapi.domain.application.domain;
 
-import com.entry.entrydsmapi.domain.user.User;
+import com.entry.entrydsmapi.domain.user.domain.User;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 

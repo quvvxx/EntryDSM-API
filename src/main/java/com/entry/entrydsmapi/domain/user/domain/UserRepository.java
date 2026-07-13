@@ -1,4 +1,4 @@
-package com.entry.entrydsmapi.domain.user;
+package com.entry.entrydsmapi.domain.user.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
