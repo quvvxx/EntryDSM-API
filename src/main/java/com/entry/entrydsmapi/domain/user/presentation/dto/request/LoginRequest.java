@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class LoginRequest {
 
     @NotBlank(message = "전화번호를 입력해주세요.")
-    @Pattern(regexp = "^010\\b{8}$",
+    @Pattern(regexp = "^010\\d{8}$",
     message = "전화번호 형식이 올바르지 않습니다.")
     private String phone;
 
