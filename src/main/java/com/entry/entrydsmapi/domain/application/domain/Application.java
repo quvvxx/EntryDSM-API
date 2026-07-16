@@ -8,7 +8,8 @@ import java.time.LocalDate;
 
 @Entity
 @NoArgsConstructor
-@Table(name = "applications")
+@Table(name = "applications",
+uniqueConstraints = @UniqueConstraint(name = "uk_application", columnNames = {"user_id", "application_year"}))
 public class Application {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
