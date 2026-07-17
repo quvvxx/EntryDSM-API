@@ -1,5 +1,6 @@
 package com.entry.entrydsmapi.global.security.jwt;
 
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
@@ -36,5 +37,31 @@ public class JwtProvider {
                 .expiration(expiration)
                 .signWith(secretKey)
                 .compact();
+    }
+
+    public boolean validateToken(String token){
+        try{
+            Jwts.parser()
+                    .verifyWith(secretKey)
+                    .build()
+                    .parseSignedClaims(token);
+
+        }
+        catch (JwtException | IllegalArgumentException e){
+            return false;
+        }
+
+        return true;
+    }
+
+    public Long getUserId(String token) {
+        String userId = Jwts.parser()
+                .verifyWith(secretKey)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload()
+                .getSubject();
+
+        return Long.valueOf(userId);
     }
 }
