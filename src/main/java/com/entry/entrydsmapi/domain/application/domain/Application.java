@@ -2,7 +2,9 @@ package com.entry.entrydsmapi.domain.application.domain;
 
 import com.entry.entrydsmapi.domain.user.domain.User;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 
@@ -45,4 +47,16 @@ public class Application {
 
     @Column(length = 1600)
     private String personalStatement;
+
+    @Builder
+    public Application(String applicantName, LocalDate birthDate, Gender gender,
+                       Region region, String studyPlan, String personalStatement, Integer applicationYear) {
+        this.applicantName = applicantName;
+        this.birthDate = birthDate;
+        this.gender = gender;
+        this.region = region;
+        this.studyPlan = studyPlan;
+        this.personalStatement = personalStatement;
+        this.applicationYear = applicationYear;
+    }
 }
