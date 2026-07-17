@@ -21,4 +21,7 @@ public class SignUpRequest {
             message = "비밀번호 형식이 올바르지 않습니다.")
     private String password;
 
+    @NotBlank(message = "비밀번호를 확인해주세요.")
+    private String passwordConfirm;
+
 }

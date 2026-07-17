@@ -3,6 +3,7 @@ package com.entry.entrydsmapi.domain.user.service;
 import com.entry.entrydsmapi.domain.user.domain.Role;
 import com.entry.entrydsmapi.domain.user.domain.User;
 import com.entry.entrydsmapi.domain.user.domain.UserRepository;
+import com.entry.entrydsmapi.domain.user.exception.PasswordMismatchException;
 import com.entry.entrydsmapi.domain.user.exception.PhoneAlreadyExistsException;
 import com.entry.entrydsmapi.domain.user.presentation.dto.request.SignUpRequest;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ public class SignUpService {
     public void signUp(SignUpRequest request){
 
         if(userRepository.existsByPhone(request.getPhone())) throw new PhoneAlreadyExistsException();
+        if(!request.getPassword().equals(request.getPasswordConfirm())) throw new PasswordMismatchException();
 
         String encodePassword = passwordEncoder.encode(request.getPassword());
 
