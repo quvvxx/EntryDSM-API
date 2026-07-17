@@ -4,6 +4,7 @@ import com.entry.entrydsmapi.domain.application.exception.IncompleteApplicationE
 import com.entry.entrydsmapi.domain.user.exception.InvalidCredentialsException;
 import com.entry.entrydsmapi.domain.user.exception.PhoneAlreadyExistsException;
 import com.entry.entrydsmapi.domain.user.exception.UserNotFoundException;
+import com.entry.entrydsmapi.global.response.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
