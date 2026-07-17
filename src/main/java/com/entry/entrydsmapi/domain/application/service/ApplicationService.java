@@ -28,7 +28,7 @@ public class ApplicationService {
         applicationRepository.delete(application);
     }
 
-    public void statusApplication(int year){
+    public void submitApplication(int year){
 
         User user = userFacade.getCurrentUser();
 
