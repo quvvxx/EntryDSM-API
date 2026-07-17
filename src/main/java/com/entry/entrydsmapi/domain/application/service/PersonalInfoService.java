@@ -30,6 +30,7 @@ public class PersonalInfoService {
         User user = userFacade.getCurrentUser();
 
         Application application = Application.builder()
+                .user(user)
                 .applicantName(user.getName())
                 .birthDate(request.getBirthDate())
                 .gender(request.getGender())

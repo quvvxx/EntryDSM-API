@@ -54,7 +54,7 @@ public class Application {
     private String personalStatement;
 
     @Builder
-    public Application(String applicantName, LocalDate birthDate, Gender gender,
+    public Application(User user, String applicantName, LocalDate birthDate, Gender gender,
                        Region region, String studyPlan, String personalStatement, Integer applicationYear, Status status) {
         this.applicantName = applicantName;
         this.birthDate = birthDate;
@@ -64,6 +64,7 @@ public class Application {
         this.personalStatement = personalStatement;
         this.applicationYear = applicationYear;
         this.status = status;
+        this.user = user;
     }
 
     public void updatePersonalInfo(LocalDate birthDate, Gender gender, Region region){
