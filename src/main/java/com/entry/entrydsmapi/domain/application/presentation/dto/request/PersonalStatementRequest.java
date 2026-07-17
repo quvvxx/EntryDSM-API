@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class personalStatementRequest {
+public class PersonalStatementRequest {
 
     @NotBlank(message = "자기소개서를 작성해주세요.")
     @Size(max = 1600, message = "자기소개서는 1600자 이하로 작성해야 합니다.")
