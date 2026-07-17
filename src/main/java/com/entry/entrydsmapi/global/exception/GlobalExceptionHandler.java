@@ -1,5 +1,6 @@
 package com.entry.entrydsmapi.global.exception;
 
+import com.entry.entrydsmapi.domain.application.exception.IncompleteApplicationException;
 import com.entry.entrydsmapi.domain.user.exception.InvalidCredentialsException;
 import com.entry.entrydsmapi.domain.user.exception.PhoneAlreadyExistsException;
 import com.entry.entrydsmapi.domain.user.exception.UserNotFoundException;
@@ -60,4 +61,16 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(response);
     }
+
+    @ExceptionHandler(IncompleteApplicationException.class)
+    public ResponseEntity<ErrorResponse> HandlerIncompleteApplication(IncompleteApplicationException e){
+        ErrorResponse response = ErrorResponse.builder()
+                .code("INCOMPLETE_APPLICATION")
+                .message(e.getMessage())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(response);
+    }
 }
+
