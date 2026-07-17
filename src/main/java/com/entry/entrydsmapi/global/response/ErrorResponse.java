@@ -1,4 +1,4 @@
-package com.entry.entrydsmapi.global.exception;
+package com.entry.entrydsmapi.global.response;
 
 import lombok.Builder;
 import lombok.Getter;
