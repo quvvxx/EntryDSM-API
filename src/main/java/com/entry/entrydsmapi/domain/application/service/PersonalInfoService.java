@@ -5,6 +5,7 @@ import com.entry.entrydsmapi.domain.application.domain.ApplicationRepository;
 import com.entry.entrydsmapi.domain.application.domain.Status;
 import com.entry.entrydsmapi.domain.application.exception.ApplicationNotFoundException;
 import com.entry.entrydsmapi.domain.application.presentation.dto.request.PersonalInfoRequest;
+import com.entry.entrydsmapi.domain.application.presentation.dto.request.PersonalInfoUpdateRequest;
 import com.entry.entrydsmapi.domain.application.presentation.dto.response.PersonalInfoResponse;
 import com.entry.entrydsmapi.domain.user.facade.UserFacade;
 import com.entry.entrydsmapi.domain.user.domain.User;
@@ -37,6 +38,7 @@ public class PersonalInfoService {
                 .status(Status.DRAFT)
                 .build();
 
+        applicationRepository.save(application);
     }
 
     @Transactional(readOnly = true)
@@ -54,13 +56,13 @@ public class PersonalInfoService {
                 .build();
     }
 
-    public void updatePersonalInfo(PersonalInfoRequest request, int year){
+    public void updatePersonalInfo(PersonalInfoUpdateRequest request, int year){
 
         User user = userFacade.getCurrentUser();
         Application application = applicationRepository.findByUserIdAndApplicationYear
                         (user.getId(), year).orElseThrow(ApplicationNotFoundException::new);
 
         application.validateNotSubmitted();
-        application.updatePersonalInfo(request.getBirthDate() ,request.getGender(),request.getRegion());
+        application.updatePersonalInfo(request.getBirthDate(), request.getGender(), request.getRegion());
     }
 }
