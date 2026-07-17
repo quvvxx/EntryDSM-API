@@ -2,6 +2,7 @@ package com.entry.entrydsmapi.global.exception;
 
 import com.entry.entrydsmapi.domain.application.exception.IncompleteApplicationException;
 import com.entry.entrydsmapi.domain.user.exception.InvalidCredentialsException;
+import com.entry.entrydsmapi.domain.user.exception.PasswordMismatchException;
 import com.entry.entrydsmapi.domain.user.exception.PhoneAlreadyExistsException;
 import com.entry.entrydsmapi.domain.user.exception.UserNotFoundException;
 import com.entry.entrydsmapi.global.response.ErrorResponse;
@@ -67,6 +68,17 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> HandlerIncompleteApplication(IncompleteApplicationException e){
         ErrorResponse response = ErrorResponse.builder()
                 .code("INCOMPLETE_APPLICATION")
+                .message(e.getMessage())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(response);
+    }
+
+    @ExceptionHandler(PasswordMismatchException.class)
+    public ResponseEntity<ErrorResponse> HandlerPasswordMismatch(PasswordMismatchException e){
+        ErrorResponse response = ErrorResponse.builder()
+                .code("PASSWORD_MISMATCH")
                 .message(e.getMessage())
                 .build();
 
