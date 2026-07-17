@@ -7,8 +7,8 @@ import lombok.Builder;
 import lombok.Getter;
 import java.time.LocalDate;
 
-@Getter
 @Builder
+@Getter
 public class PersonalInfoResponse {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
